@@ -1,0 +1,58 @@
+{%extends "base.html"%}
+{%block title%}Search User Page{%endblock%}
+
+{%block content%}
+<div class="container">
+    <div class="row">
+         <div class="col-lg-10 mx-auto mb-4">
+            <div class="section-title text-center ">
+                <h3 class="top-c-sep">Registered Users On Site</h3>
+                <p>Lorem ipsum dolor sit detudzdae amet, rcquisc adipiscing elit. Aenean socada commodo
+                    ligaui egets dolor. Nullam quis ante tiam sit ame orci eget erovtiu faucid.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-10 mx-auto">
+            <div class="career-search mb-60">
+                <form action="#" class="career-form mb-60" method="post">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-3 my-3">
+                            <div class="input-group position-relative">
+                                <input type="text" class="form-control" name="username_key" placeholder="Enter Your Keywords" id="keywords">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-3 my-3">
+                            <button type="button" class="btn btn-lg btn-block btn-light btn-custom" id="contact-submit">
+                                Search
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="filter-result">
+                    <p class="mb-30 ff-montserrat">Total User: {{total}}</p>
+                    {% for item in values%}
+                        {% if item.username == user_key %}
+                            <div class="job-box d-md-flex align-items-center justify-content-between mb-30">
+                                <div class="job-left my-4 d-md-flex align-items-center flex-wrap">
+                                    <div class="img-holder mr-md-4 mb-md-0 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex">
+                                        {{item._id}}
+                                    </div>
+                                    <div class="job-content">
+                                        <h5 class="text-center text-md-left">{{item.username}}</h5>
+                                    </div>
+                                </div> 
+                                <div class="job-right my-4 flex-shrink-0">
+                                    <a href="{{url_for('Delete_User', _id=item._id)}}" class="btn d-block w-100 d-sm-inline-block btn-light">Delete</a>
+                                </div>
+                            </div>
+                        {% endif%}
+                    {% endfor %}
+            </div>
+        </div>
+    </div>
+
+</div>
+{%endblock%}
